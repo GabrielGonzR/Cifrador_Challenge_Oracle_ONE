@@ -50,3 +50,27 @@ function CopiarTexto(){
     navigator.clipboard.writeText(input.value);
     mensaje.innerHTML = "Texto copiado!"
 }
+
+function Desencriptar(){
+    var texto = document.getElementById("base").value;
+    var mensaje = document.getElementById("mensaje");
+    var valorchar = 0;
+    var caracter = "";
+
+    for (var i=0; i<texto.length; i++){
+        valorchar = texto.charCodeAt(i);
+        caracter = texto.charAt(i);
+        if((valorchar<97||valorchar>122)&&valorchar!=32&&valorchar!=241){
+            mensaje.innerHTML = "Solo se aceptan letras minusculas sin acentos"
+            return null;
+        }
+        
+        
+    }
+    texto = texto.replace(/ai/gi, "a");
+    texto = texto.replace(/enter/gi, "e");
+    texto = texto.replace(/imes/gi, "i");
+    texto = texto.replace(/ober/gi, "o");
+    texto = texto.replace(/ufat/gi, "u");
+    document.getElementById("resultado").value = texto;
+}
